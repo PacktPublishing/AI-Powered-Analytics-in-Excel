@@ -1,0 +1,273 @@
+CHAPTER 6 – SIMULATION AND OPTIMIZATION MODEL SPECIFICATION PROMPTS
+
+============================================================ PROMPT 1:
+MONTE CARLO SIMULATION – IRR
+============================================================
+
+Objective
+
+Simulate the Internal Rate of Return (IRR) for a three-year project by
+incorporating uncertainty in annual cash flows.
+
+Project Structure
+
+Time Horizon: 3 years
+
+Initial Investment (Year 0): Fixed cash outflow = -100,000
+
+Cash Flow Distributions
+
+Year 1 Cash Flow: Distribution: Uniform Minimum: 20,000 Maximum: 40,000
+
+Year 2 Cash Flow: Distribution: Normal Mean: 50,000 Standard Deviation:
+5,000 Constraint: Cash flow >= 0
+
+Year 3 Cash Flow: Distribution: Triangular Minimum: 40,000 Most Likely:
+60,000 Maximum: 80,000
+
+Simulation Settings
+
+Number of simulations: 10,000
+
+Outputs
+
+For each simulation: - Calculate IRR based on the simulated cash-flow
+path
+
+Summary statistics: - Mean IRR - Median IRR - Confidence intervals
+
+Visualizations
+
+    - Histogram of IRR outcomes
+    - Box plot highlighting spread and outliers
+    - Probability density plot
+    - Cumulative distribution function (CDF)
+
+============================================================ PROMPT 2:
+MONTE CARLO SIMULATION – PROJECT DURATION
+============================================================
+
+Objective
+
+Estimate the distribution of total project completion time by simulating
+uncertainty in phase durations.
+
+Project Structure
+
+Project composed of three sequential phases: - Data Preparation -
+Analysis and Review - Final Delivery
+
+Phase Duration Distributions
+
+Phase 1 – Data Preparation: Distribution: Triangular Minimum: 5 days
+Most Likely: 8 days Maximum: 12 days
+
+Phase 2 – Analysis and Review: Distribution: Normal Mean: 15 days
+Standard Deviation: 3 days Constraint: Duration >= 0
+
+Phase 3 – Final Delivery: Distribution: Uniform Minimum: 4 days Maximum:
+10 days
+
+Simulation Settings
+
+Number of simulations: 10,000
+
+Outputs
+
+For each simulation: - Total project duration (sum of all phase
+durations)
+
+Summary statistics: - Mean total duration - Median total duration - 90th
+percentile duration
+
+Visualizations
+
+    - Histogram of total project duration
+    - Cumulative distribution function (CDF) plot
+
+Interpretation
+
+This simulation supports probabilistic planning statements such as: -
+“There is a 75% chance the project finishes within 32 days.” - “To be
+90% confident, we should plan for at least 35 days.”
+
+============================================================ PROMPT 3:
+MONTE CARLO SIMULATION – PROFIT UNDER UNCERTAIN DEMAND
+============================================================
+
+Objective
+
+Estimate the distribution of monthly profit under uncertain customer
+demand.
+
+Pricing and Cost Structure
+
+Selling Price per Unit: Fixed at 50
+
+Cost per Unit: Fixed at 30
+
+Inventory Available: Fixed at 1,100 units
+
+Demand Distribution
+
+Monthly Demand: Distribution: Normal Mean: 1,000 units Standard
+Deviation: 200 units Constraint: Demand >= 0
+
+Simulation Settings
+
+Number of simulations: 10,000
+
+Business Logic
+
+Units Sold: min(demand, inventory)
+
+Profit Calculation: Profit = (units_sold * price) - (inventory * cost)
+
+Outputs
+
+    - Distribution of profit outcomes
+    - Probability of a loss (profit < 0)
+    - Summary statistics (mean, median, percentiles)
+
+Visualizations
+
+    - Histogram of profit outcomes
+    - Box plot emphasizing downside risk
+    - Cumulative distribution function (CDF) showing probability
+      that profit falls below key thresholds
+
+============================================================ PROMPT 4:
+OPTIMIZATION – TWO PRODUCT PRODUCTION
+============================================================
+
+Objective
+
+Determine the optimal production quantities of Products A and B in order
+to maximize total profit, subject to labor and material constraints.
+
+Products and Profit
+
+Product A: Profit per unit: 40
+
+Product B: Profit per unit: 30
+
+Resource Requirements
+
+Labor: Product A: 2 hours per unit Product B: 4 hours per unit Total
+labor available: 100 hours
+
+Material: Product A: 3 units per unit Product B: 2 units per unit Total
+material available: 90 units
+
+Decision Variables
+
+A = number of units of Product A to produce B = number of units of
+Product B to produce
+
+Constraints
+
+Labor constraint: 2A + 4B <= 100
+
+Material constraint: 3A + 2B <= 90
+
+Non-negativity: A >= 0 B >= 0
+
+Objective Function
+
+Maximize total profit: 40A + 30B
+
+============================================================ PROMPT 5:
+OPTIMIZATION – THREE PRODUCT PRODUCTION
+============================================================
+
+Objective
+
+Determine the optimal production quantities of Products A, B, and C in
+order to maximize total profit, subject to labor, material, and
+production minimum/maximum constraints.
+
+Products and Profit
+
+Product A: Profit per unit: 25
+
+Product B: Profit per unit: 40
+
+Product C: Profit per unit: 35
+
+Resource Requirements
+
+Labor: Product A: 1 hour per unit Product B: 3 hours per unit Product C:
+2 hours per unit Total labor available: 160 hours
+
+Material: Product A: 4 units per unit Product B: 3 units per unit
+Product C: 5 units per unit Total material available: 200 units
+
+Production Constraints
+
+Minimum production: Product A: at least 10 units
+
+Maximum production: Product C: at most 40 units
+
+Decision Variables
+
+A = number of units of Product A to produce B = number of units of
+Product B to produce C = number of units of Product C to produce
+
+Constraints
+
+Labor constraint: A + 3B + 2C <= 160
+
+Material constraint: 4A + 3B + 5C <= 200
+
+Minimum production: A >= 10
+
+Maximum production: C <= 40
+
+Non-negativity: A >= 0 B >= 0 C >= 0
+
+Objective Function
+
+Maximize total profit: 25A + 40B + 35C
+
+============================================================ PROMPT 6:
+OPTIMIZATION – TRANSPORTATION PROBLEM
+============================================================
+
+Objective
+
+Determine shipment quantities from two warehouses (W1, W2) to three
+stores (S1, S2, S3) in order to minimize total shipping cost while
+meeting store demand and not exceeding warehouse capacity.
+
+Shipping Cost per Unit
+
+From W1: W1 -> S1: 4 W1 -> S2: 6 W1 -> S3: 8
+
+From W2: W2 -> S1: 5 W2 -> S2: 4 W2 -> S3: 7
+
+Supply (Warehouse Capacity)
+
+W1 capacity: up to 120 units W2 capacity: up to 150 units
+
+Demand (Store Requirements)
+
+S1 demand: 80 units S2 demand: 100 units S3 demand: 70 units
+
+Decision Variables
+
+x11 = units shipped from W1 to S1 x12 = units shipped from W1 to S2 x13
+= units shipped from W1 to S3 x21 = units shipped from W2 to S1 x22 =
+units shipped from W2 to S2 x23 = units shipped from W2 to S3
+
+Constraints
+
+Warehouse capacity constraints: x11 + x12 + x13 <= 120 x21 + x22 + x23
+<= 150
+
+Store demand constraints: x11 + x21 = 80 x12 + x22 = 100 x13 + x23 = 70
+
+Non-negativity: x11, x12, x13, x21, x22, x23 >= 0
+
+Objective Function
+
+Minimize total shipping cost: 4x11 + 6x12 + 8x13 + 5x21 + 4x22 + 7x23
